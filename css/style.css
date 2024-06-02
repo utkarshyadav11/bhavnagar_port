@@ -610,6 +610,9 @@ body {
 }
 /* swiper  */
 /* cards swiper */
+.contact_bg{
+  background-color: #C6C6C6;
+}
 .cards-swiper{
   padding: 50px 50px;
   background-color: #C6C6C6;
