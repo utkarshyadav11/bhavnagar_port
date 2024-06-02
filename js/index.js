@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function () {
     //     prevEl: '.swiper-button-prev',
     //   },
       autoplay: {
-        delay: 8000,
+        delay: 3500,
       },
       speed: 1500,
       effect: 'fade',
