@@ -537,6 +537,7 @@ body {
 .port_video {
   width: 100%;
   height: 100vh;
+  filter: brightness(70%);
   object-fit: cover;
   cursor: pointer;
   display: block;
