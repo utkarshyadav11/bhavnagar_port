@@ -613,6 +613,9 @@ body {
 .contact_bg{
   background-color: #C6C6C6;
 }
+.swiper-button-prev, .swiper-rtl .swiper-button-next {
+  color: black;
+}
 .cards-swiper{
   padding: 50px 50px;
   background-color: #C6C6C6;
