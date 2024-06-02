@@ -15,15 +15,17 @@ document.addEventListener('DOMContentLoaded', function () {
     //     prevEl: '.swiper-button-prev',
     //   },
       autoplay: {
-        delay: 5000,
+        delay: 8000,
       },
-      speed: 2000,
+      speed: 1500,
       effect: 'fade',
       fadeEffect: {
             crossFade: true,
        },
     });
   });
+
+
 
   document.addEventListener('DOMContentLoaded', function() {
     var header = document.querySelector('.header-main');
@@ -73,5 +75,44 @@ $(document).ready(function () {
       pauseBtn.css('display', 'none');
       overlay.css('opacity', '1');
       // Do not show text again on pause
+  });
+});
+
+
+
+
+
+
+document.addEventListener("DOMContentLoaded", function() {
+  // Function to animate the counting
+  function animateCount(element, start, end, duration) {
+      let startTimestamp = null;
+      const step = (timestamp) => {
+          if (!startTimestamp) startTimestamp = timestamp;
+          const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+          element.textContent = Math.floor(progress * (end - start) + start);
+          if (progress < 1) {
+              window.requestAnimationFrame(step);
+          }
+      };
+      window.requestAnimationFrame(step);
+  }
+
+  // Intersection Observer setup
+  const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+          if (entry.isIntersecting) {
+              const timelineYearElement = entry.target.querySelector('.timelineYear');
+              const endYear = parseInt(timelineYearElement.textContent);
+              const startYear = endYear - 100;
+              animateCount(timelineYearElement, startYear, endYear, 2000); // 2000ms duration for the count
+              observer.unobserve(entry.target);
+          }
+      });
+  }, { threshold: 0.5 }); // Adjust threshold as needed
+
+  // Observing each timeline year section
+  document.querySelectorAll('.timeLineYearOuterLeft, .timeLineYearOuterRight').forEach(section => {
+      observer.observe(section);
   });
 });
